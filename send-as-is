@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# file inputted will be the first param
 STDIN_FILE=$1
 
 # emit additional http response headers
 #echo "server: premortal/cit-384/ml855063"
 #echo "date: $(date)"
 
+# check if file exists
 if [[ -f $STDIN_FILE ]] ; then
     # cat file but do some substitutions
         # substitute "status:" with "HTTP/1.1"
@@ -13,6 +15,7 @@ if [[ -f $STDIN_FILE ]] ; then
     cat "$STDIN_FILE" #| sed -e 's/status:/HTTP/\1.1'
     #sed '/^ /a server: premortal/cit-384/ml855063'
 else
+    # file doesn't exist: output this instead
     echo "HTTP/1.1 404 File Not Found"
     echo "server: premortal/cit-384/ml855063"
     echo "date: $(date)"
