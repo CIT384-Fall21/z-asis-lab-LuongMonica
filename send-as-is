@@ -13,7 +13,7 @@ if [[ -f $STDIN_FILE ]] ; then
     # cat file but do some substitutions
         # substitute "status:" with "HTTP/1.1"
         # add additional response headers before the blank line
-    cat "$STDIN_FILE" | sed -e 's/status:/HTTP\/1.1/' -e '/^$/i server: premortal/cit-384/ml855063\ndate: $DATE'
+    cat "$STDIN_FILE" | sed -e 's/status:/HTTP\/1.1/' -e "/^$/i server: premortal/cit-384/ml855063\ndate: $DATE"
 else
     # file doesn't exist: output this instead
     echo "HTTP/1.1 404 File Not Found"
